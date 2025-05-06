@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+const employeeRoutes = require('./routes/employeeRoutes');
+app.use('/api/employees', employeeRoutes);
+
+
 
 
 app.get('/', (req, res) => {
