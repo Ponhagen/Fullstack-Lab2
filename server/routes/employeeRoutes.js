@@ -26,4 +26,4 @@ try {
 
 });
 
-module.export = router;
+module.exports = router;

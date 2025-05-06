@@ -21,11 +21,13 @@ app.get('/', (req, res) => {
   res.send('Server is running');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB'))
+  .then(() => {
+    console.log('✅ Connected to MongoDB');
+    app.listen(PORT, () => {
+      console.log(`Server listening on port ${PORT}`);
+    });
+  })
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
