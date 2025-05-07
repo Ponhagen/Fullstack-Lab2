@@ -1,43 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 export const AssignmentTable = () => {
   const [assignments, setAssignments] = useState([]);
 
   useEffect(() => {
-    const fetchAssignments = async () => {
-      try {
-        const res = await axios.get('http://localhost:5000/api/project_assignments');
-        setAssignments(res.data);
-      } catch (err) {
-        console.error('Error fetching assignments:', err);
-      }
-    };
-
-    fetchAssignments();
+    fetch('http://localhost:5000/api/project_assignments')
+      .then(res => res.json())
+      .then(data => setAssignments(data))
+      .catch(err => console.error('Fel vid hämtning av assignments:', err));
   }, []);
 
   return (
-    <div style={{ padding: '1rem' }}>
-      <h2>Projektuppgifter</h2>
+    <section style={{ padding: '1rem' }}>
+      <h2>Projektuppdrag</h2>
       <table border="1" cellPadding="8">
         <thead>
           <tr>
-            <th>Anställd ID</th>
-            <th>Projekt ID</th>
+            <th>Anställd</th>
+            <th>Projekt</th>
             <th>Startdatum</th>
           </tr>
         </thead>
         <tbody>
-          {assignments.map((a) => (
+          {assignments.map(a => (
             <tr key={a._id}>
-              <td>{a.employee_id}</td>
-              <td>{a.project_code}</td>
+              <td>{a.employee_id?.full_name || 'N/A'}</td>
+              <td>{a.project_code?.project_name || 'N/A'}</td>
               <td>{new Date(a.start_date).toLocaleDateString()}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 };
