@@ -1,8 +1,9 @@
-export function Header() {
-    return (
-      <header style={{ padding: '1rem', backgroundColor: '#f2f2f2' }}>
-        <h1>Projecttadministration</h1>
-      </header>
-    );
-  }
-  
+import React from 'react';
+
+export const Header = () => {
+  return (
+    <header style={{ backgroundColor: '#f5f5f5', padding: '1rem', textAlign: 'center' }}>
+      <h1>Projekt- och Uppgiftshanterare</h1>
+    </header>
+  );
+};

@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export function AssignmentTable() {
+export const AssignmentTable = () => {
   const [assignments, setAssignments] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/project_assignments')
-      .then(res => res.json())
-      .then(data => setAssignments(data))
-      .catch(err => console.error('Error fetching assignments:', err));
+    const fetchAssignments = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/project_assignments');
+        setAssignments(res.data);
+      } catch (err) {
+        console.error('Error fetching assignments:', err);
+      }
+    };
+
+    fetchAssignments();
   }, []);
 
   return (
-    <div>
-      <h2>Projectassignment</h2>
-      <table>
+    <div style={{ padding: '1rem' }}>
+      <h2>Projektuppgifter</h2>
+      <table border="1" cellPadding="8">
         <thead>
           <tr>
-            <th>Employee ID</th>
-            <th>Project Code</th>
-            <th>Start Date</th>
+            <th>Anställd ID</th>
+            <th>Projekt ID</th>
+            <th>Startdatum</th>
           </tr>
         </thead>
         <tbody>
@@ -26,11 +33,11 @@ export function AssignmentTable() {
             <tr key={a._id}>
               <td>{a.employee_id}</td>
               <td>{a.project_code}</td>
-              <td>{a.start_date?.slice(0, 10)}</td>
+              <td>{new Date(a.start_date).toLocaleDateString()}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-}
+};

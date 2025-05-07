@@ -2,6 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Assignment = require('../models/ProjectAssignment');
 
+
+router.get('/', async (req, res) => {
+    try {
+      const assignments = await Assignment.find();
+      res.status(200).json(assignments);
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching assignments', error: error.message });
+    }
+  });
+  
+
 // Get function to fetch all assignments
 router.get('/', async (req, res) => {
     try {
