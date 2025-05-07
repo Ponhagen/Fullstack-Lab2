@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Assignment = require('../models/assignmentRoutes');
+const Assignment = require('../models/ProjectAssignment');
 
 router.post('/', async (req, res) => {
     const { employee_id, project_code, start_date } = req.body;
