@@ -1,11 +1,14 @@
 import React from 'react';
 import { Header } from './components/header';
+import { AssignmentForm } from './components/assignmentForm';
+import { AssignmentTable } from './components/assignmentTable';
 
 function App() {
   return (
     <div>
       <Header />
-      {/* Här kommer resten som t.ex. AssignmentForm, AssignmentTable */}
+      <AssignmentForm onAssignmentCreated={() => {}} />
+      <AssignmentTable />
     </div>
   );
 }
