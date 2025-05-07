@@ -2,6 +2,16 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../models/Project');
 
+// Get function to fetch all projects
+router.get('/', async (req, res) => {
+    try {
+        const projects = await Project.find();
+        res.status(200).json(projects);
+    } catch (err) {
+          res.status(500).json({ message: 'Server error', error: err.message });
+      }
+  });
+
 
 router.post('/', async (req, res) => {
     const {project_code, project_name, project_description} = req.body;

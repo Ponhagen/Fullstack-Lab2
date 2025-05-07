@@ -2,6 +2,17 @@ const express = require('express');
 const router = express.Router();
 const employee = require('../models/employee');
 
+// Get function to fetch all employees
+router.get('/' , async (req, res) => {
+    try {
+        const employees = await employee.find();
+        res.status(200).json(employees);
+    } catch (err) {
+        res.status(500).json({ message: 'Server error', error: err.message });
+    }
+});
+
+
 // post - create a new employee
 router.post('/', async (req, res) => {
     const { employee_id, full_name, email, hashed_password } = req.body;
