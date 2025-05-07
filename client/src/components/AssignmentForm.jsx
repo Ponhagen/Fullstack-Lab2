@@ -33,7 +33,7 @@ export function AssignmentForm({ onAssignmentCreated }) {
     })
       .then(res => res.json())
       .then(data => {
-        onAssignmentCreated(); // uppdate list
+        onAssignmentCreated(); // update list
         setFormData({ employee_id: '', project_code: '', start_date: '' });
       })
       .catch(err => console.error('Error creating assignment:', err));
