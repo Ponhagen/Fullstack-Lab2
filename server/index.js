@@ -17,8 +17,8 @@ app.use('/api/employees', employeeRoutes);
 const projectRoutes = require('./routes/projectRoutes');
 app.use('/api/projects', projectRoutes);
 
-
-
+const assignmentRoutes = require('./routes/assignmentRoutes');
+app.use('/api/project_assignments', assignmentRoutes);
 
 
 app.get('/', (req, res) => {
