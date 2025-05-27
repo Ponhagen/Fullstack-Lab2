@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Assignment = require('../models/ProjectAssignment');
+const Assignment = require('../models/projectAssignment');
 
 
 // Get function to fetch all assignments
