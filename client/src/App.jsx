@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from './components/header';
-import { AssignmentForm } from './components/assignmentForm';
-import { AssignmentTable } from './components/assignmentTable';
+import { AssignmentForm } from './components/AssignmentForm';
+import { AssignmentTable } from './components/AssignmentTable';
 
 function App() {
   const [assignments, setAssignments] = useState([]);
