@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Header } from './components/header';
+import { Header } from './components/Header';
 import { AssignmentForm } from './components/AssignmentForm';
 import { AssignmentTable } from './components/AssignmentTable';
 
